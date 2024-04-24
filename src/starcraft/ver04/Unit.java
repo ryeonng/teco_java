@@ -1,17 +1,21 @@
-package starcraft.ver02;
+package starcraft.ver04;
 
-public class Marine { // 1>2 오버로딩
+/**
+ * 접근제어지시자
+ * public
+ * private
+ * default
+ * protected -- 상속관계에서 설정할 수 있다. 상속받은 객체는 접근 가능하다.
+ */
+public class Unit {
 
-	private String name;
-	private int power;
-	private int hp;
+	protected String name;
+	protected int power;
+	protected int hp;
 	
-	public Marine(String name) {
+	public Unit(String name) {
 		this.name = name;
-		power = 4; 
-		hp = 70;
 	}
-	
 
 	public String getName() {
 		return name;
@@ -36,19 +40,7 @@ public class Marine { // 1>2 오버로딩
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
-
-	public void attack(Zergling z) {
-		System.out.println(this.name + " 이 " + z.getName() + " 을 공격합니다.");
-		z.beAttacked(this.power);
-	}
-// 메서드 오버로딩 > 매개변수가 달라서 가능 ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-	// 마린이 질럿을 공격 합니다.
-	public void attack(Zealot z) {
-		System.out.println(this.name + " 이 " + z.getName() + " 을 공격합니다.");
-		z.beAttacked(this.power);
-	}
-
-	// 자신이 공격을 당합니다.
+	
 	public void beAttacked(int power) {
 		// 방어적 코드 작성
 		if (hp <= 0) {
@@ -58,12 +50,20 @@ public class Marine { // 1>2 오버로딩
 		}
 		hp -= power;
 	}
+	
+	
+		public void attack(Unit z) { // 다형성 사용
+			System.out.println(this.name + " 이 " + z.getName() + " 을 공격합니다.");
+			z.beAttacked(this.power);
+		}
 
+
+	
 	public void showInfo() {
 		System.out.println("==== 상태창 ====");
 		System.out.println("이름 : " + this.name);
 		System.out.println("공격력 : " + this.power);
 		System.out.println("생명력 : " + this.hp);
 	}
-
+	
 }
