@@ -21,11 +21,13 @@ public class FileCopy {
 		try (FileInputStream in = new FileInputStream(sourceFilePath);
 				FileOutputStream out = new FileOutputStream(destinationFilePath)) {
 
+			
 			int data;
-			while ( (data = in.read( ) ) != -1) {
-				// 파일에다 출력
+			while ( (data = in.read( ) ) != -1) { 
+				
 				out.write(data);
 			}
+			
 			
 			System.out.println("입력 스트림 -> 출력 스트림 -> 입력 -> 출력 의 반복 완료");
 

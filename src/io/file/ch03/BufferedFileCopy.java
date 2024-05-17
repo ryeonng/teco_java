@@ -29,6 +29,7 @@ public class BufferedFileCopy {
 			while ((data = bin.read()) != -1) {
 				bout.write(data);
 			}
+			bout.flush(); // 매번 입출력을 발생시키는 것이 아니라 한 번에 입출력 사용.
 
 		} catch (Exception e) {
 			e.printStackTrace();
